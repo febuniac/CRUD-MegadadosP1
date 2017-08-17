@@ -1,2 +1,5 @@
 # CRUD-MegadadosP1
 Projeto 1 Disciplina Megadados.
+
+## DESCRIÇÃO:
+Pessoas no dia a dia necessitam de organização com contas bancárias para saber quais contas devem pagar para não atrasar seus pagamentos e saber onde estão suas contas pagas caso necessitem de um comprovante. A organização dessas contas é uma tarefa difícil e que demanda tempo. Esta organização além de demandar tempo deve ser feita de diversas formas envolvendo a entidade responsável por essa conta, data de pagamento e data de agendamento de pagamento, além do local físico  que esta conta se encontra seja em diferentes armários e gavetas de uma empresa ou domicílio. Este projeto tem como objetivo, ajudar um usuário a organizar suas contas bancárias de acordo com organização/entidade emissora da conta, data de pagamento e localização de armários e gavetas, além de dividi-las em pagas e não pagas para que o usuário possa se organizar e saber quais contas estão pendentes a localização destas para que não atrasem no pagamento.
