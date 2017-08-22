@@ -10,10 +10,15 @@ Pessoas no dia a dia necessitam de organização com contas bancárias para sabe
 ## Features
 O usuário do BillOrganizer poderá:
 -Buscar suas contas, filtradas por Entidade Emissora.
+\\
 -Ter uma lista com as Datas de Vencimento de suas contas para ficar atento para que os pagamentos não passem da data limite.
+\\
 -Separar por e saber o status das contas arquivadas, sejam essas contas pagas ou não pagas.
+\\
 -Subdividir contas por categorias (Comida, Lazer, Trabalho, Contas domiciliares...)
+\\
 -Separar suas contas por localizaÇão em Armários e Gavetas, e pastas por cor.
+\\
 -Saber o valor pago no fim de cada período especificado pelo usuário.
 
 
