@@ -29,3 +29,6 @@ O usuário do BillOrganizer poderá:
 
 ## Diagrama Entidade Relacionamento
 ![Screenshot](BillOrganizer.png)
+
+## Detalhes Técnicos: Overview da Estrutura de Solução
+![Screenshot](Descrito.jpeg)
