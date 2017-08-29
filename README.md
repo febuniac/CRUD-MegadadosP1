@@ -9,6 +9,7 @@ Pessoas no dia a dia necessitam de organização com contas bancárias para sabe
 
 ## Features
 O usuário do BillOrganizer poderá:
+
 -Buscar suas contas, filtradas por Entidade Emissora.
 
 
