@@ -1,12 +1,16 @@
 package billOrganizer;
 
-import java.util.Calendar;
-
 public class Usuarios {
-	public Integer getRG() {
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getRG() {
 		return RG;
 	}
-	public void setRG(Integer rG) {
+	public void setRG(String rG) {
 		RG = rG;
 	}
 	public String getEmissor() {
@@ -15,10 +19,10 @@ public class Usuarios {
 	public void setEmissor(String emissor) {
 		this.emissor = emissor;
 	}
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getNome() {
@@ -27,8 +31,9 @@ public class Usuarios {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	private Integer RG;
+	private String id;
+	private String RG;
 	private String emissor;
-	private Integer cpf;
+	private String cpf;
 	private String nome;
 }

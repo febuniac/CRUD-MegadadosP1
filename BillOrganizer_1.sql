@@ -3,6 +3,7 @@ CREATE DATABASE billorganizer;
 USE billorganizer;
 
 CREATE TABLE conta (
+id int,
 entidadeEmissora varchar(45),
 dataVencimento date,
 status bit(1),
@@ -11,40 +12,38 @@ pasta varchar(45),
 gaveta int,
 armario int,
 usuario varchar(45),
-codigoDeBarras int,
+codigoDeBarras bigint,
 pasta_idPasta int,
-emissor_cnpj int,
-PRIMARY KEY (entidadeEmissora, dataVencimento, codigoDeBarras)
+emissor_cnpj varchar(45),
+PRIMARY KEY (id)
 );
 
 CREATE TABLE usuario_conta (
-usuario_RG int,
-usuario_emissor varchar(45),
-usuario_cpf int,
-conta_entidadeEmissora varchar(45),
-conta_dataVencimento date,
-primary key(usuario_RG, usuario_emissor, usuario_cpf, 
-conta_entidadeEmissora, conta_dataVencimento)
+usuario_id varchar(45),
+conta_id int,
+primary key(conta_id, usuario_id)
 );
 
 create table usuario (
-RG int,
+id varchar(45),
+RG varchar(45),
 emissor varchar(45),
-cpf int,
+cpf varchar(45),
 nome varchar(45),
-primary key (RG, emissor, cpf)
+primary key (id)
 );
 
 alter table usuario_conta 
-	add foreign key ( usuario_RG, usuario_emissor, usuario_cpf)
-		references usuario (rg, emissor, cpf);
+	add foreign key ( usuario_id)
+		references usuario (id);
         
 alter table usuario_conta 
-	add foreign key (conta_entidadeEmissora, conta_dataVencimento)
-		references conta (entidadeEmissora, dataVencimento);
+	add foreign key (conta_id)
+		references conta (id);
 
 create table emissor (
-cnpj int,
+id int,
+cnpj bigint,
 nome varchar(45),
 endereco varchar(80),
 categoria varchar(45)
@@ -53,20 +52,20 @@ categoria varchar(45)
 
 
 create table pasta (
-idPasta int,armario
-gaveta_idGaveta int
+id int,
+gaveta_id int
 );
 
 
 
 create table gaveta(
-idGaveta int,
-armario_idArmario int
+id int,
+armario_id int
 );
 
 
 
 create table armario (
-idArmario int
+id int
 );
 

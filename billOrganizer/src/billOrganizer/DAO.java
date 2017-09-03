@@ -28,14 +28,15 @@ public class DAO {
 	
 	public void adicionaUsuario(Usuarios usuario){
 		String sql = "INSERT INTO usuario" +
-	"(RG, emissor, cpf, nome) values(?, ?, ?, ?)";
+	"(id, RG, emissor, cpf, nome) values(?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
-			stmt.setInt(1,usuario.getRG());
-			stmt.setString(2, usuario.getEmissor());
-			stmt.setInt(3, usuario.getCpf());
-			stmt.setString(4, usuario.getNome());
+			stmt.setString(1, usuario.getId());
+			stmt.setString(2,usuario.getRG());
+			stmt.setString(3, usuario.getEmissor());
+			stmt.setString(4, usuario.getCpf());
+			stmt.setString(5, usuario.getNome());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -54,9 +55,10 @@ public class DAO {
 			
 			while(rs.next()){
 				Usuarios usuario = new Usuarios();
-				usuario.setRG(rs.getInt("RG"));
+				usuario.setId(rs.getString("id"));
+				usuario.setRG(rs.getString("RG"));
 				usuario.setEmissor(rs.getString("emissor"));
-				usuario.setCpf(rs.getInt("cpf"));
+				usuario.setCpf(rs.getString("cpf"));
 				usuario.setNome(rs.getString("nome"));
 				usuarios.add(usuario);
 			}
@@ -71,14 +73,15 @@ public class DAO {
 	
 	public void alteraUsuario(Usuarios usuario){
 		String sql = "UPDATE Usuario SET" +
-				"cpf=?, nome=?, where RG=?, emissor=?";
+				"cpf=?, nome=?, RG=?, emissor=? WHERE id=?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, usuario.getCpf());
+			stmt.setString(1, usuario.getCpf());
 			stmt.setString(2, usuario.getNome());
-			stmt.setInt(3, usuario.getRG());
+			stmt.setString(3, usuario.getRG());
 			stmt.setString(4, usuario.getEmissor());
+			stmt.setString(5, usuario.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -87,12 +90,11 @@ public class DAO {
 		}
 	}
 	
-	public void removeUsuario(Integer RG, String emissor){
+	public void removeUsuario(Integer id){
 		PreparedStatement stmt;
 		try {
-			stmt = connection.prepareStatement("DELETE FROM Usuario WHERE RG=?, emissor=?");
-			stmt.setInt(1, RG);
-			stmt.setString(2, emissor);
+			stmt = connection.prepareStatement("DELETE FROM Usuario WHERE id=?");
+			stmt.setInt(1, id);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

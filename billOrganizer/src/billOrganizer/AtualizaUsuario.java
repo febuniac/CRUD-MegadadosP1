@@ -15,7 +15,6 @@ public class AtualizaUsuario extends HttpServlet {
 	   PrintWriter out = response.getWriter();
 	   out.println("<html><body>");
 	   out.println("<form method='post'>");
-	   out.println("ID: <input type='number' name='id'><br>");
 	   out.println("Nome: <input type='text' name='nome'><br>");
 	   out.println("Emissor: <input type='text' name='emissor'><br>");
 	   out.println("CPF: <input type='integer' name='cpf'><br>");
