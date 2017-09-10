@@ -11,21 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-@WebServlet("/RecebeJsonUsuario")
-public class RecebeJsonUsuario extends HttpServlet{
+@WebServlet("/RecebeJsonAtualizaUsuario")
+public class RecebeJsonAtualizaUsuario extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	public void service (HttpServletRequest request,
 			HttpServletResponse response) throws ServletException,
 												IOException{
 		DAO dao = new DAO();
 		Usuarios usuario = new Usuarios();
-		usuario.setId(request.getParameter("id"));
-		usuario.setRG(request.getParameter("RG"));
-		usuario.setEmissor(request.getParameter("emissor"));
-		usuario.setCpf(request.getParameter("cpf"));
-		usuario.setNome(request.getParameter("nome"));
-		dao.adicionaUsuario(usuario);
-		/*
 		JSONObject jsonObject;
 		JSONParser parser = new JSONParser();
 		
@@ -40,11 +33,10 @@ public class RecebeJsonUsuario extends HttpServlet{
 			usuario.setRG((String) jsonObject.get("RG"));
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonEmissor"));
 			usuario.setEmissor((String) jsonObject.get("emissor"));
-			dao.adicionaUsuario(usuario);
+			dao.alteraUsuario(usuario);
 		} catch (org.json.simple.parser.ParseException e1){
 			e1.printStackTrace();
 		}
-		*/
 		dao.close();
 	}
 

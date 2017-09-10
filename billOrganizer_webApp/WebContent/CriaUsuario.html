@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="EnviaJsonUsuario.html">Cria Usuario</a></li>
+  <li><a href="EnviaJsonRemoveUsuario.html">Remove Usuario</a></li>
+  <li><a href="EnviaJsonAtualizaUsuario.html">Atualiza Usuario</a></li>
+  <li><a href="EnviaJsonListaUsuario.html">Lista Usuario</a></li>
+</ul>
+
+<form action="ServiceAdicionaUsuario" method="post">
+ 	Id:<input name="id" type="text" >
+ 	<br>
+    Nome:<input name="nome" type="datetime" >       
+    <br>             
+    CPF:<input name="cpf" type="text" >
+    <br>
+    RG:<input name="RG" type="text" >
+    <br>
+    Emissor:<input name="emissor" type="text"  >
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<!-- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<form id="output" onsubmit="return make_json(this);"action="RecebeJsonUsuario" method="post"> 
+<form action="RecebeJsonUsuario" method="post">
+json:<input type="text" name="json" value="{
+&quot;id&quot; : &quot; &quot;,
+ &quot;nome&quot; : &quot; &quot;,
+  &quot;cpf&quot; : &quot; &quot;,
+  &quot;RG&quot; : &quot; &quot;,
+   &quot;emissor&quot; : &quot; &quot;
+   }">   
+   <input type="submit" value="Submit">
+    
+
+ 	<input name="id" type="text" >
+    <input name="nome" type="datetime" >                    
+    <input name="cpf" type="text" >
+    <input name="RG" type="text" >
+    <input name="emissor" type="text"  >
+    <input type="submit" value="Submit">
+    <output type="text" name="json"></output>
+
+</form>
+
+<pre >
+
+</pre>
+<script>
+function make_json(form){
+	var json ={
+			"id" : form.id.value,
+			"nome": form.nome.value,
+			"cpf" : form.cpf.value,
+			"RG"  : form.RG.value,
+			"emissor" : form.emissor.value,
+	};
+	var html = JSON.stringify(json,0,4);
+	document.getElementById('output').innerHTML=html;
+	return json;
+}
+</script>
+ -->
+
+</body>
+</html>

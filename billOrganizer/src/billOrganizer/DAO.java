@@ -90,11 +90,11 @@ public class DAO {
 		}
 	}
 	
-	public void removeUsuario(Integer id){
+	public void removeUsuario(String id){
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement("DELETE FROM Usuario WHERE id=?");
-			stmt.setInt(1, id);
+			stmt.setString(1, id);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
