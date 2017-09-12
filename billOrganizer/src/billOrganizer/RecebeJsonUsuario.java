@@ -17,15 +17,21 @@ public class RecebeJsonUsuario extends HttpServlet{
 	public void service (HttpServletRequest request,
 			HttpServletResponse response) throws ServletException,
 												IOException{
-		DAO dao = new DAO();
-		Usuarios usuario = new Usuarios();
+		
+		
+		/*
+		 		
 		usuario.setId(request.getParameter("id"));
 		usuario.setRG(request.getParameter("RG"));
 		usuario.setEmissor(request.getParameter("emissor"));
 		usuario.setCpf(request.getParameter("cpf"));
 		usuario.setNome(request.getParameter("nome"));
 		dao.adicionaUsuario(usuario);
-		/*
+		 *
+		 */
+		request.getParameter("json");
+		DAO dao = new DAO();
+		Usuarios usuario = new Usuarios();
 		JSONObject jsonObject;
 		JSONParser parser = new JSONParser();
 		
@@ -44,7 +50,7 @@ public class RecebeJsonUsuario extends HttpServlet{
 		} catch (org.json.simple.parser.ParseException e1){
 			e1.printStackTrace();
 		}
-		*/
+		
 		dao.close();
 	}
 

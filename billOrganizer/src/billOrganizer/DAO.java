@@ -72,7 +72,7 @@ public class DAO {
 	}
 	
 	public void alteraUsuario(Usuarios usuario){
-		String sql = "UPDATE Usuario SET" +
+		String sql = "UPDATE Usuario SET " +
 				"cpf=?, nome=?, RG=?, emissor=? WHERE id=?";
 		PreparedStatement stmt;
 		try {

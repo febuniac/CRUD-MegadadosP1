@@ -30,20 +30,23 @@ li a:hover {
 <body>
 
 <ul>
-  <li><a href="EnviaJsonUsuario.html">Cria Usuario</a></li>
-  <li><a href="EnviaJsonRemoveUsuario.html">Remove Usuario</a></li>
-  <li><a href="EnviaJsonAtualizaUsuario.html">Atualiza Usuario</a></li>
-  <li><a href="EnviaJsonListaUsuario.html">Lista Usuario</a></li>
+  <li><a href="CriaUsuario.html">Cria Usuario</a></li>
+  <li><a href="RemoveUsuario.html">Remove Usuario</a></li>
+  <li><a href="AtualizaUsuario.html">Atualiza Usuario</a></li>
+  <li><a href="ListaUsuario.html">Lista Usuario</a></li>
 </ul>
-<form action="RecebeJsonAtualizaUsuario" method="post">
-json:<input type="text" name="json" value="{
-&quot;id&quot; : &quot; &quot;,
- &quot;nome&quot; : &quot; &quot;,
-  &quot;cpf&quot; : &quot; &quot;,
-  &quot;RG&quot; : &quot; &quot;,
-   &quot;emissor&quot; : &quot; &quot;
-   }">   
-   <input type="submit" value="Submit">
+<form action="ServiceAtualizaUsuario" method="post">
+ 	Id:<input name="id" type="text" >
+ 	<br>
+    Nome:<input name="nome" type="text" >       
+    <br>             
+    CPF:<input name="cpf" type="text" >
+    <br>
+    RG:<input name="RG" type="text" >
+    <br>
+    Emissor:<input name="emissor" type="text"  >
+    <br>
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>

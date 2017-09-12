@@ -30,15 +30,13 @@ li a:hover {
 <body>
 
 <ul>
-  <li><a href="EnviaJsonUsuario.html">Cria Usuario</a></li>
-  <li><a href="EnviaJsonRemoveUsuario.html">Remove Usuario</a></li>
-  <li><a href="EnviaJsonAtualizaUsuario.html">Atualiza Usuario</a></li>
-  <li><a href="EnviaJsonListaUsuario.html">Lista Usuario</a></li>
+  <li><a href="CriaUsuario.html">Cria Usuario</a></li>
+  <li><a href="RemoveUsuario.html">Remove Usuario</a></li>
+  <li><a href="AtualizaUsuario.html">Atualiza Usuario</a></li>
+  <li><a href="ListaUsuario.html">Lista Usuario</a></li>
 </ul>
-<form action="RecebeJsonRemoveUsuario" method="post">
-json:<input type="text" name="json" value="{
-&quot;id&quot; : &quot; &quot;
-   }">   
+<form action="ServiceRemoveUsuario" method="post">
+Id:<input name="id" type="text" >
    <input type="submit" value="Submit">
    </form>
 </body>
