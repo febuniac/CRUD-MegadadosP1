@@ -3,9 +3,10 @@ CREATE DATABASE billorganizer;
 USE billorganizer;
 
 CREATE TABLE conta (
-id int,
-entidadeEmissora varchar(45),
-dataVencimento date,
+id int auto_increment,
+emissor varchar(45),
+vencimento date,
+valor int,
 status bit(1),
 categoria varchar(45),
 pasta varchar(45),
@@ -19,17 +20,17 @@ PRIMARY KEY (id)
 );
 
 CREATE TABLE usuario_conta (
-usuario_id varchar(45),
+usuario_id int,
 conta_id int,
 primary key(conta_id, usuario_id)
 );
 
 create table usuario (
-id varchar(45),
+id int auto_increment,
 RG varchar(45),
 emissor varchar(45),
 cpf varchar(45),
-nome varchar(45),
+nome varchar(45) not null,
 primary key (id)
 );
 

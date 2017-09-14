@@ -11,36 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-@WebServlet("/RecebeJsonUsuario")
-public class RecebeJsonUsuario extends HttpServlet{
+
+@WebServlet("/RecebeJsonRemoveConta")
+public class RecebeJsonRemoveConta extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	public void service (HttpServletRequest request,
 			HttpServletResponse response) throws ServletException,
 												IOException{
-		
-		
-		request.getParameter("json");
 		DAO dao = new DAO();
-		Usuarios usuario = new Usuarios();
 		JSONObject jsonObject;
 		JSONParser parser = new JSONParser();
 		
 		try{
 			jsonObject = (JSONObject) parser.parse(request.getParameter("json"));
-			//usuario.setId((String) jsonObject.get("id"));
-			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonNome"));
-			usuario.setNome((String) jsonObject.get("nome"));
-			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonCpf"));
-			usuario.setCpf((String) jsonObject.get("cpf"));
-			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonRG"));
-			usuario.setRG((String) jsonObject.get("RG"));
-			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonEmissor"));
-			usuario.setEmissor((String) jsonObject.get("emissor"));
-			dao.adicionaUsuario(usuario);
+			dao.removeConta(Integer.valueOf(jsonObject.get("id").toString()));
 		} catch (org.json.simple.parser.ParseException e1){
 			e1.printStackTrace();
 		}
-		
 		dao.close();
 	}
 

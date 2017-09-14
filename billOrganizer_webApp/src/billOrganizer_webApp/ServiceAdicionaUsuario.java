@@ -31,7 +31,7 @@ public class ServiceAdicionaUsuario extends HttpServlet {
      throws IOException, ServletException {
          PrintWriter out = response.getWriter();
          Usuarios usuario = new Usuarios();
-         usuario.setId(request.getParameter("id"));
+         //usuario.setId(request.getParameter("id"));
          usuario.setNome(request.getParameter("nome"));
          usuario.setRG(request.getParameter("RG"));
          usuario.setEmissor(request.getParameter("emissor"));
