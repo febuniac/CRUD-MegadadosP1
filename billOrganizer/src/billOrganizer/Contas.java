@@ -27,7 +27,14 @@ public class Contas {
 	public void setValor(Integer valor) {
 		this.valor = valor;
 	}
+	public Integer getUsuario_id() {
+		return usuario_id;
+	}
+	public void setUsuario_id(Integer usuario_id) {
+		this.usuario_id = usuario_id;
+	}
 	private Integer id;
+	private Integer usuario_id;
 	private String emissor;
 	private Calendar vencimento;
 	private Integer valor;

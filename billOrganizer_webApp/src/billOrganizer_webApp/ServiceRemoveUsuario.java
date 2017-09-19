@@ -50,8 +50,6 @@ out.println("<body>");
 out.println("Id " + usuario.getId() + " removido com sucesso.");
 out.println("Voltar para o ");
 out.println("<a href=\"menu.html\">Menu Principal</a>");
-out.println(" ou ");
-out.println("<a href=\"RemoveUsuario.html\"> Remover outro Usuario</a>");
 out.println("</a>");
 out.println("</body>");
 out.println("</html>");

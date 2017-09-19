@@ -47,8 +47,6 @@ out.println("<body>");
 out.println("Id " + conta.getId() + " removido com sucesso.");
 out.println("Voltar para o ");
 out.println("<a href=\"menu.html\">Menu Principal</a>");
-out.println(" ou ");
-out.println("<a href=\"RemoveConta.html\"> Remover outra Conta</a>");
 out.println("</a>");
 out.println("</body>");
 out.println("</html>");

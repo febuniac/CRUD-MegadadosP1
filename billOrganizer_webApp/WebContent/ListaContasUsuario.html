@@ -38,10 +38,10 @@ li a:hover {
   <li><a href="ServiceListaContasUsuarioPre">Lista Contas Usuario</a></li>
 </ul>
 
-<form action="ServiceRemoveConta" method="post">
- 	<input name="id" type="hidden" id="id">
+<form name="myForm" id="myForm" action="ServiceListaContasUsuario" method="post">
+ 	Usuario Id:<input name="usuario_id" type="text" id="id">
  	<br>
-    <input type="submit" value="Remover Conta">
+    <input type="submit" value="Listar">
 </form>
 <script type="text/javascript">
 var hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
@@ -49,7 +49,7 @@ for(var i = 0; i < hashParams.length; i++){
     var p = hashParams[i].split('=');
     document.getElementById(p[0]).value = decodeURIComponent(p[1]);;
 }
-
+document.getElementById('myForm').submit();
 </script>
 </body>
 </html>

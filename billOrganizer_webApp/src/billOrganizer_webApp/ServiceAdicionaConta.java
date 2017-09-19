@@ -53,7 +53,7 @@ public class ServiceAdicionaConta extends HttpServlet {
     	 
    
          conta.setValor(Integer.valueOf(request.getParameter("valor")));
-         
+         conta.setUsuario_id(Integer.valueOf(request.getParameter("usuario_id")));
         String json = new Gson().toJson(conta);
  		System.out.println(json);
  		

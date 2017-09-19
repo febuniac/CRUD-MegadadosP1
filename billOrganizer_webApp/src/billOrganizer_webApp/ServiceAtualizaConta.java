@@ -50,7 +50,7 @@ public class ServiceAtualizaConta extends HttpServlet {
     	 
    
          conta.setValor(Integer.valueOf(request.getParameter("valor")));
-         
+         conta.setUsuario_id(Integer.valueOf(request.getParameter("usuario_id")));
         String json = new Gson().toJson(conta);
  		System.out.println(json);
  		
@@ -68,8 +68,6 @@ public class ServiceAtualizaConta extends HttpServlet {
  		out.println(conta.getEmissor() + " atualizado com sucesso.");
  		out.println("Voltar para o ");
  		out.println("<a href=\"menu.html\">Menu Principal</a>");
- 		out.println(" ou ");
- 		out.println("<a href=\"AtualizaConta.html\"> Atualizar nova Conta</a>");
  		out.println("</a>");
  		out.println("</body>");
  		out.println("</html>");

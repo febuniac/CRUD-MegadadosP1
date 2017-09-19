@@ -30,27 +30,32 @@ li a:hover {
 <body>
 
 <ul>
+  <li><a href="menu.html">Menu Principal</a></li>
   <li><a href="CriaUsuario.html">Cria Usuario</a></li>
-  <li><a href="RemoveUsuario.html">Remove Usuario</a></li>
-  <li><a href="AtualizaUsuario.html">Atualiza Usuario</a></li>
   <li><a href="ServiceListaUsuarios">Lista Usuario</a></li>
   <li><a href="CriaConta.html">Cria Conta</a></li>
-  <li><a href="RemoveConta.html">Remove Conta</a></li>
-  <li><a href="AtualizaConta.html">Atualiza Conta</a></li>
   <li><a href="ServiceListaContas">Lista Conta</a></li>
+  <li><a href="ServiceListaContasUsuarioPre">Lista Contas Usuario</a></li>
 </ul>
-<form action="ServiceAtualizaConta" method="post">
- 	Id:<input name="id" type="text" >
- 	<br>
-    Nome:<input name="nome" type="text" >       
+<form action="ServiceAtualizaUsuario" method="post">
+ 	<input name="id" type="hidden" id="id">
+    Nome:<input name="nome" type="text" id="nome">       
     <br>             
-    CPF:<input name="cpf" type="text" >
+    CPF:<input name="cpf" type="text" id="cpf">
     <br>
-    RG:<input name="RG" type="text" >
+    RG:<input name="RG" type="text" id="RG">
     <br>
-    Emissor:<input name="emissor" type="text"  >
+    Emissor:<input name="emissor" type="text"  id="emissor">
     <br>
     <input type="submit" value="Submit">
 </form>
+<script type="text/javascript">
+var hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
+for(var i = 0; i < hashParams.length; i++){
+    var p = hashParams[i].split('=');
+    document.getElementById(p[0]).value = decodeURIComponent(p[1]);;
+}
+
+</script>
 </body>
 </html>

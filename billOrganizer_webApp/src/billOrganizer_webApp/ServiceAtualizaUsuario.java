@@ -51,8 +51,6 @@ out.println("<body>");
 out.println("Id " + usuario.getId() + " atualizado com sucesso.");
 out.println("Voltar para o ");
 out.println("<a href=\"menu.html\">Menu Principal</a>");
-out.println(" ou ");
-out.println("<a href=\"AtualizaUsuario.html\"> Atualizar outro Usuario</a>");
 out.println("</a>");
 out.println(".");
 out.println("</body>");

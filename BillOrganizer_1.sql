@@ -3,11 +3,12 @@ CREATE DATABASE billorganizer;
 USE billorganizer;
 
 CREATE TABLE conta (
-id int auto_increment,
+conta_id int auto_increment,
+usuario_id int,
 emissor varchar(45),
 vencimento date,
 valor int,
-status bit(1),
+status bit,
 categoria varchar(45),
 pasta varchar(45),
 gaveta int,
@@ -16,31 +17,19 @@ usuario varchar(45),
 codigoDeBarras bigint,
 pasta_idPasta int,
 emissor_cnpj varchar(45),
-PRIMARY KEY (id)
+PRIMARY KEY (conta_id)
 );
 
-CREATE TABLE usuario_conta (
-usuario_id int,
-conta_id int,
-primary key(conta_id, usuario_id)
-);
 
 create table usuario (
-id int auto_increment,
+usuario_id int auto_increment,
 RG varchar(45),
 emissor varchar(45),
 cpf varchar(45),
 nome varchar(45) not null,
-primary key (id)
+conta_id int,
+primary key (usuario_id)
 );
-
-alter table usuario_conta 
-	add foreign key ( usuario_id)
-		references usuario (id);
-        
-alter table usuario_conta 
-	add foreign key (conta_id)
-		references conta (id);
 
 create table emissor (
 id int,

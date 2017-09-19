@@ -30,14 +30,12 @@ li a:hover {
 <body>
 
 <ul>
+  <li><a href="menu.html">Menu Principal</a></li>
   <li><a href="CriaUsuario.html">Cria Usuario</a></li>
-  <li><a href="RemoveUsuario.html">Remove Usuario</a></li>
-  <li><a href="AtualizaUsuario.html">Atualiza Usuario</a></li>
   <li><a href="ServiceListaUsuarios">Lista Usuario</a></li>
   <li><a href="CriaConta.html">Cria Conta</a></li>
-  <li><a href="RemoveConta.html">Remove Conta</a></li>
-  <li><a href="AtualizaConta.html">Atualiza Conta</a></li>
   <li><a href="ServiceListaContas">Lista Conta</a></li>
+  <li><a href="ServiceListaContasUsuarioPre">Lista Contas Usuario</a></li>
 </ul>
 
 <form action="ServiceAdicionaConta" method="post">
@@ -47,8 +45,12 @@ li a:hover {
     <br>
     Valor:<input name="valor" type="text" >
     <br>
-    Status:<input name="emissor" type="text"  >
+    Usuario_id:<input name="usuario_id" type="text" >
     <br>
+   <!-- 
+   Status:<input name="status" type="text"  >
+    <br>
+     --> 
     <input type="submit" value="Submit">
 </form>
 </body>

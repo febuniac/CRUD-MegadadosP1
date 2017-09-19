@@ -53,6 +53,7 @@ public class RecebeJsonAtualizaConta extends HttpServlet{
 			
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonRG"));
 			conta.setValor(Integer.valueOf(jsonObject.get("valor").toString()));
+			conta.setUsuario_id(Integer.valueOf(jsonObject.get("usuario_id").toString()));
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonEmissor"));
 			dao.alteraConta(conta);
 		} catch (org.json.simple.parser.ParseException e1){

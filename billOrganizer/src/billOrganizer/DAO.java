@@ -84,13 +84,14 @@ public class DAO {
 	
 	public void adicionaConta(Contas conta){
 		String sql = "INSERT INTO conta" +
-	"(emissor, vencimento, valor) values(?, ?, ?)";
+	"(emissor, vencimento, valor, usuario_id) values(?, ?, ?, ?)";
 		PreparedStatement stmt;
 		try{
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, conta.getEmissor());
 			stmt.setDate(2, new Date(conta.getVencimento().getTimeInMillis()));
 			stmt.setInt(3, conta.getValor());
+			stmt.setInt(4, conta.getUsuario_id());
 			stmt.execute();
 			stmt.close();
 			System.out.println("DAO");
@@ -110,7 +111,7 @@ public class DAO {
 			
 			while(rs.next()){
 				Usuarios usuario = new Usuarios();
-				usuario.setId(rs.getString("id"));
+				usuario.setId(rs.getString("usuario_id"));
 				usuario.setRG(rs.getString("RG"));
 				usuario.setEmissor(rs.getString("emissor"));
 				usuario.setCpf(rs.getString("cpf"));
@@ -136,12 +137,13 @@ public class DAO {
 			
 			while(rs.next()){
 				Contas conta = new Contas();
-				conta.setId(rs.getInt("id"));
+				conta.setId(rs.getInt("conta_id"));
 				conta.setEmissor(rs.getString("emissor"));
 				Calendar data = Calendar.getInstance();
 				data.setTime(rs.getDate("vencimento"));
 				conta.setVencimento(data);
 				conta.setValor(Integer.valueOf(rs.getString("valor")));
+				conta.setUsuario_id(rs.getInt("usuario_id"));
 				contas.add(conta);
 			}
 			rs.close();
@@ -152,10 +154,42 @@ public class DAO {
 		}
 		return contas;		
 	}
+
+	public List<ContasUsuario> getListaContasUsuario(int usuario_id){
+		
+		List<ContasUsuario> contasUsuario = new ArrayList<ContasUsuario>();
+		
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement("SELECT u.nome, c.conta_id, c.emissor, c.valor, c.vencimento, c.usuario_id FROM conta c, usuario u WHERE c.usuario_id = u.usuario_id AND u.usuario_id =?");
+			stmt.setInt(1, usuario_id);
+			//stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()){
+				ContasUsuario contaUsuario = new ContasUsuario();
+				contaUsuario.setConta_id(rs.getInt("conta_id"));
+				contaUsuario.setEmissor(rs.getString("emissor"));
+				Calendar data = Calendar.getInstance();
+				data.setTime(rs.getDate("vencimento"));
+				contaUsuario.setVencimento(data);
+				contaUsuario.setValor(Integer.valueOf(rs.getString("valor")));
+				contaUsuario.setNome(rs.getString("nome"));
+				contaUsuario.setUsuario_id(Integer.valueOf(rs.getString("usuario_id")));
+				contasUsuario.add(contaUsuario);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return contasUsuario;		
+	}
 	
 	public void alteraUsuario(Usuarios usuario){
 		String sql = "UPDATE Usuario SET " +
-				"cpf=?, nome=?, RG=?, emissor=? WHERE id=?";
+				"cpf=?, nome=?, RG=?, emissor=? WHERE usuario_id=?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
@@ -174,14 +208,15 @@ public class DAO {
 	
 	public void alteraConta(Contas conta){
 		String sql = "UPDATE Conta SET "+
-				"emissor=?, vencimento=?, valor=? WHERE id=?";
+				"emissor=?, vencimento=?, valor=?, usuario_id=? WHERE conta_id=?";
 		PreparedStatement stmt;
 		try{
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, conta.getEmissor());
 			stmt.setDate(2, new Date(conta.getVencimento().getTimeInMillis()));
 			stmt.setInt(3, conta.getValor());
-			stmt.setInt(4, conta.getId());
+			stmt.setInt(4, conta.getUsuario_id());
+			stmt.setInt(5, conta.getId());
 			stmt.execute();
 			stmt.close();
 			System.out.println("DAO");
@@ -194,7 +229,7 @@ public class DAO {
 	public void removeUsuario(String id){
 		PreparedStatement stmt;
 		try {
-			stmt = connection.prepareStatement("DELETE FROM Usuario WHERE id=?");
+			stmt = connection.prepareStatement("DELETE FROM Usuario WHERE usuario_id=?");
 			stmt.setString(1, id);
 			stmt.execute();
 			stmt.close();
@@ -207,7 +242,7 @@ public class DAO {
 	public void removeConta(int id){
 		PreparedStatement stmt;
 		try {
-			stmt = connection.prepareStatement("DELETE FROM Conta WHERE id=?");
+			stmt = connection.prepareStatement("DELETE FROM Conta WHERE conta_id=?");
 			stmt.setInt(1, id);
 			stmt.execute();
 			stmt.close();
