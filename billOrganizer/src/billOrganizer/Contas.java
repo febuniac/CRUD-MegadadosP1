@@ -38,6 +38,13 @@ public class Contas {
 	private String emissor;
 	private Calendar vencimento;
 	private Integer valor;
+	private String status;
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 
 }

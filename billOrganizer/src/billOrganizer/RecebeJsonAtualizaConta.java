@@ -32,6 +32,7 @@ public class RecebeJsonAtualizaConta extends HttpServlet{
 			conta.setId(Integer.valueOf(jsonObject.get("id").toString()));
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonNome"));
 			conta.setEmissor((String) jsonObject.get("emissor"));
+			conta.setStatus((String) jsonObject.get("status"));
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonCpf"));
 			System.out.println( jsonObject.get("vencimento"));
 			//JSONArray venc= (JSONArray) jsonObject.get("vencimento");

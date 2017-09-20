@@ -33,11 +33,20 @@ public class Contas {
 	public void setUsuario_id(Integer usuario_id) {
 		this.usuario_id = usuario_id;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	private Integer id;
 	private Integer usuario_id;
 	private String emissor;
 	private Calendar vencimento;
 	private Integer valor;
+	private String status;
 	
 
 }

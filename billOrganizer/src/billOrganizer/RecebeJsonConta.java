@@ -33,6 +33,7 @@ public class RecebeJsonConta extends HttpServlet{
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonNome"));
 			conta.setEmissor((String) jsonObject.get("emissor"));
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonCpf"));
+			conta.setStatus((String) jsonObject.get("status"));
 			System.out.println( jsonObject.get("vencimento"));
 			//JSONArray venc= (JSONArray) jsonObject.get("vencimento");
 			//jsonObjectV = (JSONObject) parserV.parse( (String) jsonObject.get("vencimento"));
@@ -54,6 +55,7 @@ public class RecebeJsonConta extends HttpServlet{
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonRG"));
 			conta.setValor(Integer.valueOf(jsonObject.get("valor").toString()));
 			conta.setUsuario_id(Integer.valueOf(jsonObject.get("usuario_id").toString()));
+			
 			//jsonObject = (JSONObject) parser.parse(request.getParameter("jsonEmissor"));
 			dao.adicionaConta(conta);
 		} catch (org.json.simple.parser.ParseException e1){

@@ -58,7 +58,7 @@ if(resp.getStatusLine().getStatusCode() == 200) {
   String line;
   out.println("<html><body><table border='1'>");
   out.println("<tr><td>Nome</td><td>Conta_id</td>" + 
-              "<td>Emissor</td><td>Valor</td><td>Vencimento</td><td>Atualizar</td><td>Remover</td></tr>");
+              "<td>Emissor</td><td>Valor</td><td>Vencimento</td><td>Status</td><td>Atualizar</td><td>Remover</td></tr>");
   
   //usuario = (Usuarios) gson.fromJson(line, Usuarios.class);
 	JSONParser jsonParser = new JSONParser();
@@ -76,8 +76,11 @@ if(resp.getStatusLine().getStatusCode() == 200) {
 		    int year = Integer.valueOf(objectV.get("year").toString());
 	        int month = Integer.valueOf(objectV.get("month").toString());
 	        int dayOfMonth = Integer.valueOf(objectV.get("dayOfMonth").toString());
+	        int um = 1;
+	        month= month+um;
 		    out.println("<td >" + dayOfMonth+"/"+month+"/"+year + "</td>");
-		    out.println("<td><a href=\"http://localhost:8080/billOrganizer_webApp/AtualizaConta.html#id="+object.get("conta_id")+"&emissor="+object.get("emissor")+"&valor="+object.get("valor")+"&usuario_id="+object.get("usuario_id")+"\">Atualizar</a></td>");
+		    out.println("<td >" + object.get("status") + "</td>");
+		    out.println("<td><a href=\"http://localhost:8080/billOrganizer_webApp/AtualizaConta.html#id="+object.get("conta_id")+"&emissor="+object.get("emissor")+"&valor="+object.get("valor")+"&usuario_id="+object.get("usuario_id")+"&status="+object.get("status")+"\">Atualizar</a></td>");
 		    out.println("<td><a href=\"http://localhost:8080/billOrganizer_webApp/RemoveConta.html#id="+object.get("conta_id")+"\">Remover</a></td></tr>");
 		}
 	} catch (ParseException e) {

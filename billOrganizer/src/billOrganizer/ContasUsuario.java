@@ -8,6 +8,14 @@ public class ContasUsuario {
 	String emissor;
 	Integer valor;
 	Calendar vencimento;
+	String status;
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public Integer getUsuario_id() {
 		return usuario_id;
 	}

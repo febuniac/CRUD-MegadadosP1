@@ -43,26 +43,7 @@ public class DAO {
 	
 	}
 
-/*	
- * 
-	private Connection connection = null;
-	public DAO() throws IOException{
-	try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			connection = DriverManager.getConnection(
-					"jdbc:mysql://localhost/billOrganizer", "root", "123456");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	*/
+
 	public void adicionaUsuario(Usuarios usuario){
 		String sql = "INSERT INTO usuario" +
 	"(RG, emissor, cpf, nome) values(?, ?, ?, ?)";
@@ -84,7 +65,7 @@ public class DAO {
 	
 	public void adicionaConta(Contas conta){
 		String sql = "INSERT INTO conta" +
-	"(emissor, vencimento, valor, usuario_id) values(?, ?, ?, ?)";
+	"(emissor, vencimento, valor, usuario_id, status) values(?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		try{
 			stmt = connection.prepareStatement(sql);
@@ -92,6 +73,7 @@ public class DAO {
 			stmt.setDate(2, new Date(conta.getVencimento().getTimeInMillis()));
 			stmt.setInt(3, conta.getValor());
 			stmt.setInt(4, conta.getUsuario_id());
+			stmt.setString(5, conta.getStatus());
 			stmt.execute();
 			stmt.close();
 			System.out.println("DAO");
@@ -144,6 +126,7 @@ public class DAO {
 				conta.setVencimento(data);
 				conta.setValor(Integer.valueOf(rs.getString("valor")));
 				conta.setUsuario_id(rs.getInt("usuario_id"));
+				conta.setStatus(rs.getString("status"));
 				contas.add(conta);
 			}
 			rs.close();
@@ -161,7 +144,7 @@ public class DAO {
 		
 		PreparedStatement stmt;
 		try {
-			stmt = connection.prepareStatement("SELECT u.nome, c.conta_id, c.emissor, c.valor, c.vencimento, c.usuario_id FROM conta c, usuario u WHERE c.usuario_id = u.usuario_id AND u.usuario_id =?");
+			stmt = connection.prepareStatement("SELECT u.nome, c.conta_id, c.emissor, c.valor, c.vencimento, c.usuario_id, c.status FROM conta c, usuario u WHERE c.usuario_id = u.usuario_id AND u.usuario_id =?");
 			stmt.setInt(1, usuario_id);
 			//stmt.execute();
 			ResultSet rs = stmt.executeQuery();
@@ -176,6 +159,7 @@ public class DAO {
 				contaUsuario.setValor(Integer.valueOf(rs.getString("valor")));
 				contaUsuario.setNome(rs.getString("nome"));
 				contaUsuario.setUsuario_id(Integer.valueOf(rs.getString("usuario_id")));
+				contaUsuario.setStatus(rs.getString("status"));
 				contasUsuario.add(contaUsuario);
 			}
 			rs.close();
@@ -208,7 +192,7 @@ public class DAO {
 	
 	public void alteraConta(Contas conta){
 		String sql = "UPDATE Conta SET "+
-				"emissor=?, vencimento=?, valor=?, usuario_id=? WHERE conta_id=?";
+				"emissor=?, vencimento=?, valor=?, usuario_id=?, status=? WHERE conta_id=?";
 		PreparedStatement stmt;
 		try{
 			stmt = connection.prepareStatement(sql);
@@ -216,7 +200,8 @@ public class DAO {
 			stmt.setDate(2, new Date(conta.getVencimento().getTimeInMillis()));
 			stmt.setInt(3, conta.getValor());
 			stmt.setInt(4, conta.getUsuario_id());
-			stmt.setInt(5, conta.getId());
+			stmt.setString(5, conta.getStatus());
+			stmt.setInt(6, conta.getId());
 			stmt.execute();
 			stmt.close();
 			System.out.println("DAO");

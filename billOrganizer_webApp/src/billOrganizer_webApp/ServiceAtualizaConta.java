@@ -33,6 +33,7 @@ public class ServiceAtualizaConta extends HttpServlet {
          Contas conta = new Contas();
          conta.setId(Integer.valueOf(request.getParameter("id")));
          conta.setEmissor(request.getParameter("emissor"));
+         conta.setStatus(request.getParameter("status"));
          String vencimento = request.getParameter("vencimento");
          
          Date data;
