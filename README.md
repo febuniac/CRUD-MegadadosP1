@@ -9,9 +9,16 @@ Pessoas no dia a dia necessitam de organização com contas bancárias para sabe
 
 ## Features
 O usuário do BillOrganizer poderá:
+
 -Criar differentes usuários (para uma familia por exemplo)
+
+
 -Adicionar contas de diferentes emissores.
+
+
 -Atualizar e Remover contas pagas.
+
+
 -Buscar suas contas, filtradas por Usúario.
 
 
